@@ -40,10 +40,10 @@ a:hover{color:var(--oro2)}
 :focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:6px}
 img,svg{max-width:100%}
 .wrap{width:100%;max-width:var(--ancho);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
-.serif{font-family:var(--serif);font-weight:400;font-variation-settings:"opsz" 48}
+.serif{font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 24}
 h1,h2,h3{margin:0;font-weight:400}
-h2{font-family:var(--serif);font-size:clamp(36px,5vw,62px);line-height:1.06;letter-spacing:-.012em;font-variation-settings:"opsz" 60}
-h3{font-family:var(--serif);font-size:clamp(22px,2.2vw,27px);line-height:1.2;font-variation-settings:"opsz" 28;font-weight:500}
+h2{font-family:var(--serif);font-size:clamp(36px,5vw,62px);line-height:1.08;letter-spacing:-.005em;font-weight:500;font-variation-settings:"opsz" 30}
+h3{font-family:var(--serif);font-size:clamp(22px,2.2vw,27px);line-height:1.2;font-variation-settings:"opsz" 14;font-weight:600}
 p{margin:0}
 .lead{font-size:clamp(17px,1.4vw,19px);color:var(--gris);max-width:58ch}
 section{position:relative}
@@ -108,14 +108,14 @@ section{position:relative}
 .hero{min-height:100svh;padding:clamp(120px,16vh,170px) 0 70px;display:flex;flex-direction:column;justify-content:center;background:radial-gradient(120% 70% at 50% -10%,#1C1A22 0%,var(--negro) 60%)}
 .hero-texto{text-align:center;display:flex;flex-direction:column;align-items:center;gap:26px}
 .hero .ceja{color:var(--gris);font-size:15px;letter-spacing:.02em}
-.hero h1{font-family:var(--serif);font-size:clamp(52px,9.4vw,140px);line-height:.94;letter-spacing:-.03em;font-variation-settings:"opsz" 96;max-width:12ch}
+.hero h1{font-family:var(--serif);font-size:clamp(50px,8.6vw,128px);line-height:.98;letter-spacing:-.02em;font-weight:500;font-variation-settings:"opsz" 40;max-width:12ch}
 .hero .lead{text-align:center;max-width:56ch}
 .hero-acciones{display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .escena{position:relative;max-width:1100px;margin:clamp(40px,6vh,70px) auto 0;width:100%}
 .dialogo{display:flex;align-items:flex-start;gap:18px;max-width:760px;margin:18px auto 0;padding:0 8px;min-height:120px}
 .dialogo .txt{flex:1;min-width:0}
 .dialogo .yo{font-size:15px;color:var(--gris);min-height:1.5em}
-.dialogo .ella{font-family:var(--serif);font-size:clamp(20px,2.3vw,27px);line-height:1.38;font-variation-settings:"opsz" 30;min-height:2.8em}
+.dialogo .ella{font-family:var(--serif);font-size:clamp(20px,2.3vw,26px);line-height:1.42;font-weight:500;font-variation-settings:"opsz" 14;min-height:2.8em}
 .cursor{display:inline-block;width:2px;height:.95em;background:var(--oro);margin-inline-start:4px;vertical-align:-2px;animation:parpadeo 1s steps(1) infinite}
 @keyframes parpadeo{50%{opacity:0}}
 .pista{margin-top:28px;text-align:center;color:var(--gris2);font-size:13px}
@@ -123,11 +123,11 @@ section{position:relative}
 /* Frases */
 .frases{border-top:1px solid var(--linea);border-bottom:1px solid var(--linea);padding:34px 0}
 .frases .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 34px}
-.frases span{font-family:var(--serif);font-style:italic;font-size:clamp(17px,1.7vw,21px);color:var(--gris);font-variation-settings:"opsz" 22}
+.frases span{font-family:var(--serif);font-size:clamp(17px,1.7vw,20px);color:var(--crema);font-weight:500;font-variation-settings:"opsz" 12;opacity:.82}
 
 /* Manifiesto */
 .manifiesto{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(40px,7vw,110px);align-items:end}
-.manifiesto h2{font-size:clamp(40px,5.6vw,74px)}
+.manifiesto h2{font-size:clamp(38px,5.2vw,68px)}
 .principios{display:grid;gap:30px}
 .principio{display:grid;grid-template-columns:auto 1fr;gap:18px;padding-top:24px;border-top:1px solid var(--linea)}
 .principio svg{width:30px;height:30px}
@@ -138,13 +138,13 @@ section{position:relative}
 .dia{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:clamp(30px,5vw,80px)}
 .dia-fijo{position:sticky;top:110px;align-self:start;height:calc(100svh - 160px);display:flex;flex-direction:column;justify-content:center;gap:18px}
 .reloj-dia{display:flex;align-items:baseline;gap:16px}
-.reloj-dia b{font:400 clamp(44px,5vw,72px)/1 var(--serif);font-variation-settings:"opsz" 72;color:var(--oro2)}
+.reloj-dia b{font:500 clamp(44px,5vw,72px)/1 var(--serif);font-variation-settings:"opsz" 36;color:var(--oro2)}
 .reloj-dia span{color:var(--gris);font-size:15px}
 .pasos{display:flex;flex-direction:column}
 .paso{min-height:72svh;display:flex;flex-direction:column;justify-content:center;gap:14px;opacity:.28;transition:opacity .6s var(--ease)}
 .paso.activo{opacity:1}
 .paso .h{color:var(--oro);font:500 14px/1 var(--sans);letter-spacing:.04em}
-.paso blockquote{margin:0;font-family:var(--serif);font-style:italic;font-size:clamp(23px,2.4vw,31px);line-height:1.3;font-variation-settings:"opsz" 32}
+.paso blockquote{margin:0;font-family:var(--serif);font-size:clamp(22px,2.3vw,29px);line-height:1.36;font-weight:500;font-variation-settings:"opsz" 14}
 .paso p{color:var(--gris);max-width:44ch}
 
 /* Capacidades */
@@ -157,7 +157,7 @@ section{position:relative}
 .pieza.p4,.pieza.p5,.pieza.p6{grid-column:span 2}
 .pieza.p7{grid-column:span 6;flex-direction:row;align-items:center;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .pieza svg.ico{width:34px;height:34px}
-.lenguas{display:flex;gap:28px;font-family:var(--serif);font-size:clamp(24px,3vw,38px);color:var(--oro2);flex-wrap:wrap}
+.lenguas{display:flex;gap:28px;font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 24;font-size:clamp(24px,3vw,38px);color:var(--oro2);flex-wrap:wrap}
 .zonas{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:4px;max-width:260px}
 .zonas i{height:34px;border-radius:8px;border:1px solid var(--linea);transition:background 1s,border-color 1s}
 .zonas i.on{background:rgba(212,181,122,.32);border-color:var(--oro)}
@@ -190,8 +190,8 @@ section{position:relative}
 .movil .pant{height:100%;border-radius:33px;background:var(--negro);display:flex;flex-direction:column;padding:18px 14px 14px;gap:10px}
 .movil .barra{display:flex;justify-content:space-between;align-items:center;color:var(--gris);font:300 11px/1 var(--marca);letter-spacing:.3em}
 .movil .centro{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center}
-.movil .s1{font:400 18px/1.15 var(--serif);color:var(--oro2)}
-.movil .s2{font:400 16px/1.2 var(--serif)}
+.movil .s1{font:500 18px/1.2 var(--serif);font-variation-settings:"opsz" 12;color:var(--oro2)}
+.movil .s2{font:500 16px/1.2 var(--serif);font-variation-settings:"opsz" 12}
 .movil .chips{display:flex;gap:6px;overflow:hidden}
 .movil .chips span{flex:none;font-size:10.5px;padding:7px 11px;border-radius:999px;border:1px solid var(--linea2);color:var(--crema)}
 .movil .entrada{display:flex;gap:6px;align-items:center}
@@ -202,11 +202,11 @@ section{position:relative}
 .demo{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(30px,5vw,70px);align-items:center}
 .consola{background:var(--panel);border:1px solid var(--linea);border-radius:28px;padding:clamp(22px,3vw,34px);display:flex;flex-direction:column;gap:18px}
 .consola .cab{display:flex;align-items:center;gap:14px}
-.consola .cab b{font:400 24px/1 var(--serif)}
+.consola .cab b{font:600 24px/1 var(--serif);font-variation-settings:"opsz" 14}
 .consola .cab small{display:block;color:var(--gris);font-size:13px;margin-top:4px}
 .chat{min-height:120px;display:flex;flex-direction:column;gap:10px;justify-content:flex-end}
 .chat .yo{align-self:flex-end;background:var(--panel2);padding:10px 16px;border-radius:18px;font-size:15px;max-width:85%}
-.chat .ella{font-family:var(--serif);font-size:20px;line-height:1.4;font-variation-settings:"opsz" 24}
+.chat .ella{font-family:var(--serif);font-size:20px;line-height:1.45;font-weight:500;font-variation-settings:"opsz" 12}
 .fila{display:flex;gap:10px}
 .fila input{flex:1;min-width:0;height:54px;border-radius:999px;border:1px solid var(--linea2);background:var(--negro);color:var(--crema);font:400 16px var(--sans);padding:0 22px}
 .fila input:focus{outline:none;border-color:var(--oro)}
@@ -240,20 +240,20 @@ section{position:relative}
 /* Proceso */
 .proceso{list-style:none;padding:0;margin:clamp(40px,5vw,64px) 0 0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:24px;counter-reset:p}
 .proceso li{counter-increment:p;display:flex;flex-direction:column;gap:10px;padding-top:26px;border-top:1px solid var(--linea2)}
-.proceso li::before{content:counter(p);font:400 46px/1 var(--serif);color:var(--oro);font-variation-settings:"opsz" 48}
+.proceso li::before{content:counter(p);font:500 46px/1 var(--serif);color:var(--oro);font-variation-settings:"opsz" 30}
 .proceso p{color:var(--gris);font-size:15px}
 
 /* Arquitectos */
 .arq{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(40px,6vw,90px);align-items:start}
 .ventajas{display:grid;gap:0}
-.ventajas div{padding:20px 0;border-top:1px solid var(--linea);font:400 clamp(20px,2vw,24px)/1.3 var(--serif)}
+.ventajas div{padding:20px 0;border-top:1px solid var(--linea);font:500 clamp(20px,2vw,23px)/1.35 var(--serif);font-variation-settings:"opsz" 14}
 .ventajas div:last-child{border-bottom:1px solid var(--linea)}
 
 /* FAQ */
 .faq{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(40px,6vw,90px)}
 details{border-top:1px solid var(--linea)}
 details:last-child{border-bottom:1px solid var(--linea)}
-summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font:400 clamp(20px,2vw,24px)/1.3 var(--serif)}
+summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;padding:24px 0;font:500 clamp(20px,2vw,23px)/1.35 var(--serif);font-variation-settings:"opsz" 14}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font:300 26px/1 var(--sans);color:var(--oro);transition:transform .3s}
 details[open] summary::after{transform:rotate(45deg)}
@@ -274,13 +274,13 @@ textarea.campo{resize:vertical;min-height:110px}
 .pildoras button{border:1px solid var(--linea2);background:none;color:var(--crema);font:400 14px var(--sans);min-height:44px;padding:0 16px;border-radius:999px;cursor:pointer}
 .pildoras button[aria-pressed="true"]{background:var(--oro);color:#16130D;border-color:var(--oro)}
 .ok{display:none;flex-direction:column;align-items:flex-start;gap:14px;padding:30px 0}
-.ok b{font:400 34px/1.1 var(--serif)}
+.ok b{font:500 34px/1.15 var(--serif);font-variation-settings:"opsz" 24}
 .error{display:none;color:#E8A87C;font-size:14px}
 
 /* Pie */
 footer{border-top:1px solid var(--linea);padding:56px 0 calc(40px + env(safe-area-inset-bottom,0))}
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px}
-footer .lema{font:400 italic 20px/1.3 var(--serif);color:var(--gris);margin-top:12px}
+footer .lema{font:500 20px/1.3 var(--serif);font-variation-settings:"opsz" 14;color:var(--gris);margin-top:12px}
 footer nav{display:flex;gap:22px;flex-wrap:wrap}
 footer nav a{color:var(--gris2);font-size:14px}
 footer small{width:100%;color:var(--gris2);font-size:13px}
@@ -340,7 +340,6 @@ html[lang="ar"] .paso .h{letter-spacing:0}
       <a href="#dia" data-i="nav.exp">Experiencia</a>
       <a href="#invisible" data-i="nav.tech">Tecnología</a>
       <a href="#app" data-i="nav.app">App</a>
-      <a href="#colecciones" data-i="nav.col">Colecciones</a>
       <a href="#arquitectos" data-i="nav.arq">Arquitectos</a>
     </nav>
     <div class="derecha">
@@ -359,7 +358,6 @@ html[lang="ar"] .paso .h{letter-spacing:0}
     <a href="#dia" data-i="nav.exp">Experiencia</a>
     <a href="#invisible" data-i="nav.tech">Tecnología</a>
     <a href="#app" data-i="nav.app">App</a>
-    <a href="#colecciones" data-i="nav.col">Colecciones</a>
     <a href="#arquitectos" data-i="nav.arq">Arquitectos</a>
     <a href="#contacto" data-i="nav.cta" style="color:var(--oro)">Solicitar demo</a>
   </div>
@@ -565,43 +563,6 @@ html[lang="ar"] .paso .h{letter-spacing:0}
   </div>
 </section>
 
-<!-- COLECCIONES -->
-<section class="sec" id="colecciones" style="padding-top:0">
-  <div class="wrap">
-    <h2 data-i="col.t">Dos formas de vivir con Auré.</h2>
-    <div class="colecciones">
-      <article class="coleccion">
-        <div class="nombre">Auré Esencial</div>
-        <p class="para" data-i="col.e.para">Para viviendas en obra o reforma.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.e1">Voz en las estancias principales</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.e2">Pantallas de pared con la app de Auré</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.e3">Luces, persianas y clima conectados</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.e4">Escenas y voz a medida</span></li>
-        </ul>
-        <p class="precio" data-i="col.precio">Propuesta a medida tras la visita</p>
-        <a class="btn btn-linea" href="#contacto" data-i="col.cta">Solicitar propuesta</a>
-      </article>
-      <article class="coleccion firma">
-        <div class="nombre">Auré Signature</div>
-        <p class="para" data-i="col.s.para">Para villas excepcionales.</p>
-        <ul>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.s1">Inteligencia artificial privada dentro de la villa</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.s2">Sonido invisible, oculto bajo el acabado</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.s3">Voz y personalidad exclusivas</span></li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="#D4B57A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg><span data-i="col.s4">Servicio dedicado y respuesta prioritaria</span></li>
-        </ul>
-        <p class="precio" data-i="col.precio">Propuesta a medida tras la visita</p>
-        <a class="btn btn-oro" href="#contacto" data-i="col.cta">Solicitar propuesta</a>
-      </article>
-    </div>
-    <div class="membresia">
-      <div><b data-i="mem.t">Membresía Auré</b><p data-i="mem.b">Soporte, mejoras continuas y los servicios del hogar, en un solo lugar.</p></div>
-      <div class="orb" style="--s:46px" aria-hidden="true"><i></i><i></i><i></i></div>
-    </div>
-  </div>
-</section>
-
 <!-- PRIVACIDAD -->
 <section class="sec" id="privacidad" style="padding-top:0">
   <div class="wrap privacidad">
@@ -612,7 +573,7 @@ html[lang="ar"] .paso .h{letter-spacing:0}
     <div class="garantias">
       <div class="garantia"><svg viewBox="0 0 30 30" fill="none" stroke="#D4B57A" stroke-width="1.4" aria-hidden="true"><rect x="11" y="4" width="8" height="14" rx="4"/><path d="M7 14a8 8 0 0 0 16 0M15 22v4"/></svg><h3 data-i="pr1.t">Solo escucha su nombre</h3><p data-i="pr1.d">La palabra que la despierta se detecta dentro de la casa.</p></div>
       <div class="garantia"><svg viewBox="0 0 30 30" fill="none" stroke="#D4B57A" stroke-width="1.4" aria-hidden="true"><rect x="5" y="9" width="20" height="12" rx="6"/><circle cx="19" cy="15" r="4" fill="#D4B57A"/></svg><h3 data-i="pr2.t">Micrófonos con interruptor físico</h3><p data-i="pr2.d">Silencio garantizado en cada estancia, con un solo toque.</p></div>
-      <div class="garantia"><svg viewBox="0 0 30 30" fill="none" stroke="#D4B57A" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M5 13L15 5l10 8v12H5z"/><rect x="11" y="15" width="8" height="6" rx="1.5"/><path d="M13 15v-2a2 2 0 0 1 4 0v2"/></svg><h3 data-i="pr3.t">Inteligencia privada</h3><p data-i="pr3.d">Con Signature, la inteligencia funciona en un equipo dentro de tu villa.</p></div>
+      <div class="garantia"><svg viewBox="0 0 30 30" fill="none" stroke="#D4B57A" stroke-width="1.4" stroke-linejoin="round" aria-hidden="true"><path d="M5 13L15 5l10 8v12H5z"/><rect x="11" y="15" width="8" height="6" rx="1.5"/><path d="M13 15v-2a2 2 0 0 1 4 0v2"/></svg><h3 data-i="pr3.t">Inteligencia privada</h3><p data-i="pr3.d">Si lo prefieres, la inteligencia funciona en un equipo dentro de tu casa.</p></div>
       <div class="garantia"><svg viewBox="0 0 30 30" fill="none" stroke="#D4B57A" stroke-width="1.4" aria-hidden="true"><circle cx="11" cy="11" r="4"/><circle cx="21" cy="13" r="3"/><path d="M4 24c.8-4 3.6-6 7-6s6.2 2 7 6M17 23c.6-3 2.2-4.5 4.5-4.5S25.4 20 26 23"/></svg><h3 data-i="pr4.t">Permisos para cada persona</h3><p data-i="pr4.d">Familia, invitados y personal de servicio, cada uno con su acceso.</p></div>
     </div>
   </div>
@@ -835,7 +796,7 @@ window.T = {
   'pr2.t':['Micrófonos con interruptor físico','Microphones with a physical switch','ميكروفونات بمفتاح فعلي'],
   'pr2.d':['Silencio garantizado en cada estancia, con un solo toque.','Guaranteed silence in every room, at a single touch.','صمت مضمون في كل غرفة بلمسة واحدة.'],
   'pr3.t':['Inteligencia privada','Private intelligence','ذكاء خاص'],
-  'pr3.d':['Con Signature, la inteligencia funciona en un equipo dentro de tu villa.','With Signature, the intelligence runs on hardware inside your villa.','مع Signature يعمل الذكاء على جهاز داخل فيلتك.'],
+  'pr3.d':['Si lo prefieres, la inteligencia funciona en un equipo dentro de tu casa.','If you prefer, the intelligence runs on hardware inside your home.','إن رغبت، يعمل الذكاء على جهاز داخل منزلك.'],
   'pr4.t':['Permisos para cada persona','Permissions for every person','صلاحيات لكل شخص'],
   'pr4.d':['Familia, invitados y personal de servicio, cada uno con su acceso.','Family, guests and staff, each with their own access.','العائلة والضيوف والموظفون، لكلٍّ صلاحياته.'],
 
