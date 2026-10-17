@@ -39,7 +39,16 @@ a{color:var(--oro);text-decoration:none}
 a:hover{color:var(--oro2)}
 :focus-visible{outline:2px solid var(--oro);outline-offset:3px;border-radius:6px}
 img,svg{max-width:100%}
-.wrap{width:100%;max-width:var(--ancho);margin:0 auto;padding:0 clamp(20px,4vw,40px)}
+.wrap{width:100%;max-width:var(--ancho);margin:0 auto;padding-left:max(clamp(20px,4vw,40px),env(safe-area-inset-left,0px));padding-right:max(clamp(20px,4vw,40px),env(safe-area-inset-right,0px))}
+html{scroll-padding-top:96px}
+@media (pointer:fine){html{overscroll-behavior:none}}
+a,button,summary,input,textarea{touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+h1,h2,h3{text-wrap:balance}
+p,blockquote,li{text-wrap:pretty}
+.saltar{position:fixed;left:16px;top:-80px;z-index:130;background:var(--oro);color:#16130D;padding:12px 20px;border-radius:999px;font:600 15px/1 var(--sans);transition:top .2s}
+.saltar:focus{top:calc(12px + env(safe-area-inset-top,0px));color:#16130D}
+.pausa{flex:none;width:44px;height:44px;border-radius:50%;border:1px solid var(--linea2);background:none;color:var(--gris);display:grid;place-items:center;cursor:pointer;transition:border-color .2s,color .2s}
+.pausa:hover{border-color:var(--oro);color:var(--crema)}
 .serif{font-family:var(--serif);font-weight:500;font-variation-settings:"opsz" 24}
 h1,h2,h3{margin:0;font-weight:400}
 h2{font-family:var(--serif);font-size:clamp(36px,5vw,62px);line-height:1.08;letter-spacing:-.005em;font-weight:500;font-variation-settings:"opsz" 30}
@@ -210,6 +219,7 @@ section{position:relative}
 .fila{display:flex;gap:10px}
 .fila input{flex:1;min-width:0;height:54px;border-radius:999px;border:1px solid var(--linea2);background:var(--negro);color:var(--crema);font:400 16px var(--sans);padding:0 22px}
 .fila input:focus{outline:none;border-color:var(--oro)}
+.fila input:focus-visible{box-shadow:0 0 0 3px rgba(212,181,122,.35)}
 .enviar{width:54px;height:54px;border-radius:50%;border:0;background:var(--oro);cursor:pointer;display:grid;place-items:center;flex:none}
 .sugerencias{display:flex;flex-wrap:wrap;gap:8px}
 .sugerencias button{border:1px solid var(--linea2);background:none;color:var(--crema);font:400 14px var(--sans);min-height:40px;padding:0 15px;border-radius:999px;cursor:pointer;transition:border-color .2s,background .2s}
@@ -269,6 +279,8 @@ form{background:var(--panel);border:1px solid var(--linea);border-radius:30px;pa
 label,.etq{display:block;font-size:13.5px;color:var(--gris);margin-bottom:8px}
 .campo{width:100%;min-height:52px;border-radius:14px;border:1px solid var(--linea2);background:var(--negro);color:var(--crema);font:400 16px var(--sans);padding:13px 16px}
 .campo:focus{outline:none;border-color:var(--oro)}
+.campo:focus-visible{box-shadow:0 0 0 3px rgba(212,181,122,.35)}
+.campo[aria-invalid="true"]{border-color:#E8A87C}
 textarea.campo{resize:vertical;min-height:110px}
 .pildoras{display:flex;flex-wrap:wrap;gap:8px}
 .pildoras button{border:1px solid var(--linea2);background:none;color:var(--crema);font:400 14px var(--sans);min-height:44px;padding:0 16px;border-radius:999px;cursor:pointer}
@@ -282,7 +294,12 @@ footer{border-top:1px solid var(--linea);padding:56px 0 calc(40px + env(safe-are
 footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:30px}
 footer .lema{font:500 20px/1.3 var(--serif);font-variation-settings:"opsz" 14;color:var(--gris);margin-top:12px}
 footer nav{display:flex;gap:22px;flex-wrap:wrap}
-footer nav a{color:var(--gris2);font-size:14px}
+footer nav a{color:var(--gris2);font-size:14px;transition:color .2s}
+footer nav a:hover,.datos a:hover{color:var(--oro2)}
+summary:hover{color:var(--oro2)}
+.pildoras button:hover,.idiomas button:hover{border-color:var(--oro);color:var(--crema)}
+.idiomas button[aria-pressed="true"]:hover{color:#16130D}
+.reloj-dia b,.tablet .dig{font-variant-numeric:tabular-nums}
 footer small{width:100%;color:var(--gris2);font-size:13px}
 .wa{position:fixed;inset-inline-end:16px;bottom:calc(16px + env(safe-area-inset-bottom,0));z-index:60;width:58px;height:58px;border-radius:50%;background:var(--oro);color:#16130D;display:grid;place-items:center;box-shadow:0 10px 30px rgba(0,0,0,.45)}
 .wa:hover{color:#16130D}
@@ -322,11 +339,12 @@ html[lang="ar"] .paso .h{letter-spacing:0}
 </style>
 </head>
 <body>
+<a class="saltar" href="#contenido" data-i="saltar">Saltar al contenido</a>
 
 <div id="pre" aria-hidden="true">
   <div>
     <svg viewBox="0 0 64 64"><path class="t" d="M10 30L32 10L54 30V58H10Z"/><path class="t" d="M24 30L32 37L40 30"/><path class="r" d="M29.5 37H34.5L33.5 41H30.5Z"/><path class="r" d="M30.5 41L28.5 51L32 56L35.5 51L33.5 41Z"/></svg>
-    <div class="w">AURÉ</div>
+    <div class="w" translate="no">AURÉ</div>
   </div>
 </div>
 
@@ -334,7 +352,7 @@ html[lang="ar"] .paso .h{letter-spacing:0}
   <div class="wrap">
     <a class="marca" href="#inicio" aria-label="Auré">
       <svg viewBox="0 0 64 64" fill="none" stroke="#D4B57A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M10 30L32 10L54 30V58H10Z"/><path d="M24 30L32 37L40 30"/><path d="M29.5 37H34.5L33.5 41H30.5Z" fill="#D4B57A"/><path d="M30.5 41L28.5 51L32 56L35.5 51L33.5 41Z" fill="#D4B57A"/></svg>
-      <span>AURÉ</span>
+      <span translate="no">AURÉ</span>
     </a>
     <nav class="enlaces" aria-label="Principal">
       <a href="#dia" data-i="nav.exp">Experiencia</a>
@@ -344,13 +362,13 @@ html[lang="ar"] .paso .h{letter-spacing:0}
     </nav>
     <div class="derecha">
       <div class="idiomas" role="group" aria-label="Idioma">
-        <button data-lang="es" aria-pressed="true">ES</button>
-        <button data-lang="en" aria-pressed="false">EN</button>
-        <button data-lang="ar" aria-pressed="false">ع</button>
+        <button data-lang="es" aria-pressed="true" aria-label="Español" lang="es">ES</button>
+        <button data-lang="en" aria-pressed="false" aria-label="English" lang="en">EN</button>
+        <button data-lang="ar" aria-pressed="false" aria-label="العربية" lang="ar">ع</button>
       </div>
       <a class="btn btn-oro" href="#contacto" data-i="nav.cta" style="min-height:44px;padding:0 20px;font-size:14px">Solicitar demo</a>
-      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-label="Menú">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 9h16M4 15h16"/></svg>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuMovil" aria-label="Menú">
+        <svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M4 9h16M4 15h16"/></svg>
       </button>
     </div>
   </div>
@@ -363,7 +381,7 @@ html[lang="ar"] .paso .h{letter-spacing:0}
   </div>
 </header>
 
-<main>
+<main id="contenido" tabindex="-1">
 <!-- HERO -->
 <section class="hero" id="inicio">
   <div class="wrap">
@@ -384,6 +402,9 @@ html[lang="ar"] .paso .h{letter-spacing:0}
           <p class="yo" id="yoHero">&nbsp;</p>
           <p class="ella"><span id="ellaHero"></span><span class="cursor" id="cursorHero" hidden></span></p>
         </div>
+        <button class="pausa" id="pausaHero" type="button" aria-pressed="false" data-ia="pausa.pausar" aria-label="Pausar la conversación de ejemplo">
+          <svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="icoPausa"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+        </button>
       </div>
     </div>
   </div>
@@ -472,7 +493,7 @@ html[lang="ar"] .paso .h{letter-spacing:0}
       </div>
       <div class="pieza p7">
         <div style="max-width:44ch"><h3 data-i="c7.t">Habla tu idioma</h3><p data-i="c7.d">Cada miembro de la familia conversa con Auré en su propio idioma.</p></div>
-        <div class="lenguas" aria-hidden="true"><span>Español</span><span>English</span><span>العربية</span></div>
+        <div class="lenguas" aria-hidden="true" translate="no"><span>Español</span><span>English</span><span>العربية</span></div>
       </div>
     </div>
   </div>
@@ -511,7 +532,7 @@ html[lang="ar"] .paso .h{letter-spacing:0}
     </div>
     <div class="dispositivos" aria-hidden="true">
       <div class="tablet"><div class="pant">
-        <svg viewBox="0 0 200 200" id="relojTablet">
+        <svg viewBox="0 0 200 200" id="relojTablet" translate="no">
           <circle cx="100" cy="100" r="94" fill="#0E0E11" stroke="#D4B57A" stroke-opacity=".75" stroke-width="1.6"/>
           <circle cx="100" cy="100" r="88" fill="none" stroke="#D4B57A" stroke-opacity=".28"/>
           <g id="indices"></g>
@@ -526,7 +547,7 @@ html[lang="ar"] .paso .h{letter-spacing:0}
         <span class="sub" data-i="app.reposo">Di «Auré» o toca la pantalla</span>
       </div></div>
       <div class="movil"><div class="pant">
-        <div class="barra"><span>▦</span><span>AURÉ</span><span>D</span></div>
+        <div class="barra"><span>▦</span><span translate="no">AURÉ</span><span>D</span></div>
         <div class="centro">
           <div class="orb" style="--s:84px"><i></i><i></i><i></i></div>
           <div class="s1" data-i="ph.saludo">Buenas tardes, Laura.</div>
@@ -545,13 +566,13 @@ html[lang="ar"] .paso .h{letter-spacing:0}
     <div class="consola">
       <div class="cab">
         <div class="orb" id="orbDemo" style="--s:58px"><i></i><i></i><i></i></div>
-        <div><b>Auré</b><small id="estadoDemo" data-i="demo.estado">Lista para escucharte</small></div>
+        <div><b translate="no">Auré</b><small id="estadoDemo" data-i="demo.estado">Lista para escucharte</small></div>
       </div>
       <div class="casa-host" id="casaDemo"></div>
       <div class="chat" id="chat" aria-live="polite"></div>
       <div class="fila">
         <input id="entrada" type="text" autocomplete="off" data-iph="demo.ph" placeholder="Habla con Auré…" aria-label="Mensaje para Auré">
-        <button class="enviar" id="enviar" aria-label="Enviar"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16130D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+        <button class="enviar" id="enviar" aria-label="Enviar"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#16130D" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
       </div>
       <div class="sugerencias" id="sugerencias"></div>
     </div>
@@ -643,8 +664,8 @@ html[lang="ar"] .paso .h{letter-spacing:0}
         <input type="hidden" name="idioma" id="fIdioma" value="es">
         <div class="dos">
           <div><label for="fNombre" data-i="f.nombre">Nombre</label><input class="campo" id="fNombre" name="nombre" autocomplete="name" required></div>
-          <div><label for="fTel" data-i="f.tel">Teléfono</label><input class="campo" id="fTel" name="telefono" type="tel" autocomplete="tel" required></div>
-          <div><label for="fMail" data-i="f.mail">Correo</label><input class="campo" id="fMail" name="email" type="email" autocomplete="email"></div>
+          <div><label for="fTel" data-i="f.tel">Teléfono</label><input class="campo" id="fTel" name="telefono" type="tel" inputmode="tel" autocomplete="tel" required></div>
+          <div><label for="fMail" data-i="f.mail">Correo</label><input class="campo" id="fMail" name="email" type="email" autocomplete="email" spellcheck="false"></div>
           <div><label for="fCiudad" data-i="f.ciudad">Ciudad</label><input class="campo" id="fCiudad" name="ciudad" autocomplete="address-level2"></div>
         </div>
         <div><span class="etq" id="lPerfil" data-i="f.soy">Soy</span><div class="pildoras" role="group" aria-labelledby="lPerfil" data-grupo="fPerfil">
@@ -675,7 +696,7 @@ html[lang="ar"] .paso .h{letter-spacing:0}
 <footer>
   <div class="wrap">
     <div>
-      <a class="marca" href="#inicio" aria-label="Auré"><svg viewBox="0 0 64 64" fill="none" stroke="#D4B57A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M10 30L32 10L54 30V58H10Z"/><path d="M24 30L32 37L40 30"/><path d="M29.5 37H34.5L33.5 41H30.5Z" fill="#D4B57A"/><path d="M30.5 41L28.5 51L32 56L35.5 51L33.5 41Z" fill="#D4B57A"/></svg><span>AURÉ</span></a>
+      <a class="marca" href="#inicio" aria-label="Auré"><svg viewBox="0 0 64 64" fill="none" stroke="#D4B57A" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M10 30L32 10L54 30V58H10Z"/><path d="M24 30L32 37L40 30"/><path d="M29.5 37H34.5L33.5 41H30.5Z" fill="#D4B57A"/><path d="M30.5 41L28.5 51L32 56L35.5 51L33.5 41Z" fill="#D4B57A"/></svg><span translate="no">AURÉ</span></a>
       <p class="lema" data-i="pie.lema">Tu casa, en buenas manos.</p>
     </div>
     <nav aria-label="Legal"><a href="#" data-i="pie.legal">Aviso legal</a><a href="#" data-i="pie.priv">Privacidad</a><a href="#" data-i="pie.cookies">Cookies</a></nav>
@@ -715,19 +736,19 @@ window.T = {
   'dia.t':['Un día cualquiera, en una casa que piensa contigo.','An ordinary day, in a home that thinks with you.','يوم عادي في منزل يفكّر معك.'],
   'dia.s':['Desliza y observa cómo la casa acompaña cada momento.','Scroll and watch the home accompany every moment.','مرّر وشاهد كيف يرافقك المنزل في كل لحظة.'],
   's1.t':['Al despertar','Waking up','عند الاستيقاظ'],
-  's1.q':['«Buenos días. Fuera hay 18 grados; voy subiendo las persianas.»','"Good morning. It\'s 18 degrees outside; I\'m raising the blinds."','«صباح الخير. الحرارة في الخارج 18 درجة؛ سأرفع الستائر.»'],
+  's1.q':['«Buenos días. Fuera hay 18 grados; voy subiendo las persianas.»','“Good morning. It’s 18 degrees outside; I’m raising the blinds.”','«صباح الخير. الحرارة في الخارج 18 درجة؛ سأرفع الستائر.»'],
   's1.d':['Luz suave, persianas que se abren despacio y tu agenda en la pantalla de la cocina.','Soft light, blinds opening slowly and your agenda on the kitchen screen.','إضاءة ناعمة، وستائر تُفتح ببطء، وجدولك على شاشة المطبخ.'],
   's2.t':['Mientras no estás','While you\'re away','أثناء غيابك'],
-  's2.q':['«El jardinero ha terminado. Te dejo las fotos en la app.»','"The gardener has finished. The photos are in the app."','«انتهى البستاني من عمله. الصور في التطبيق.»'],
+  's2.q':['«El jardinero ha terminado. Te dejo las fotos en la app.»','“The gardener has finished. The photos are in the app.”','«انتهى البستاني من عمله. الصور في التطبيق.»'],
   's2.d':['Profesionales de confianza entran, trabajan y salen, con registro de cada visita.','Trusted professionals come in, work and leave, with every visit logged.','يدخل محترفون موثوقون ويعملون ويغادرون، مع تسجيل كل زيارة.'],
   's3.t':['Al llegar','Arriving home','عند الوصول'],
-  's3.q':['«Bienvenida. El salón está a 22 grados y el porche, encendido.»','"Welcome home. The living room is at 22 degrees and the porch is lit."','«أهلاً بعودتك. حرارة الصالة 22 درجة والشرفة مضاءة.»'],
+  's3.q':['«Bienvenida. El salón está a 22 grados y el porche, encendido.»','“Welcome home. The living room is at 22 degrees and the porch is lit.”','«أهلاً بعودتك. حرارة الصالة 22 درجة والشرفة مضاءة.»'],
   's3.d':['La casa sabe que vienes y te recibe preparada.','The home knows you\'re coming and greets you ready.','يعرف المنزل أنك قادم فيستقبلك مستعداً.'],
   's4.t':['La cena','Dinner','العشاء'],
-  's4.q':['«Modo cena listo. ¿Pongo algo de música?»','"Dinner mode is ready. Shall I play some music?"','«وضع العشاء جاهز. هل أشغّل بعض الموسيقى؟»'],
+  's4.q':['«Modo cena listo. ¿Pongo algo de música?»','“Dinner mode is ready. Shall I play some music?”','«وضع العشاء جاهز. هل أشغّل بعض الموسيقى؟»'],
   's4.d':['Una sola frase cambia luces, persianas, música y clima a la vez.','One sentence changes lights, blinds, music and climate at once.','جملة واحدة تغيّر الإضاءة والستائر والموسيقى والمناخ معاً.'],
   's5.t':['De madrugada','In the small hours','في الفجر'],
-  's5.q':['«Hay agua bajo el lavavajillas. He cerrado la llave general y he avisado al fontanero.»','"There\'s water under the dishwasher. I\'ve closed the main valve and called the plumber."','«هناك ماء تحت غسالة الصحون. أغلقت المحبس الرئيسي واتصلت بالسبّاك.»'],
+  's5.q':['«Hay agua bajo el lavavajillas. He cerrado la llave general y he avisado al fontanero.»','“There’s water under the dishwasher. I’ve closed the main valve and called the plumber.”','«هناك ماء تحت غسالة الصحون. أغلقت المحبس الرئيسي واتصلت بالسبّاك.»'],
   's5.d':['Detecta una fuga, actúa sola y te avisa al momento.','It detects a leak, acts on its own and alerts you instantly.','يكتشف التسرّب ويتصرّف بمفرده وينبّهك فوراً.'],
 
   'cap.t':['Todo lo que una casa debería saber hacer.','Everything a home should know how to do.','كل ما يجب أن يعرفه المنزل.'],
@@ -736,7 +757,7 @@ window.T = {
   'c2.t':['Sabe dónde estás','Knows where you are','يعرف أين أنت'],
   'c2.d':['Sensores de presencia por zonas: te responde en la habitación en la que estás.','Zoned presence sensing: it answers you in the room you\'re in.','استشعار الحضور حسب المناطق: يجيبك في الغرفة التي أنت فيها.'],
   'c3.t':['Escenas con una frase','Scenes in a sentence','مشاهد بجملة واحدة'],
-  'c3.d':['«Modo cine», «buenas noches», «salgo de casa». Toda la casa a la vez.','"Cinema mode", "good night", "I\'m leaving". The whole home at once.','«وضع السينما»، «تصبح على خير»، «أنا خارج». المنزل كله دفعة واحدة.'],
+  'c3.d':['«Modo cine», «buenas noches», «salgo de casa». Toda la casa a la vez.','“Cinema mode”, “good night”, “I’m leaving”. The whole home at once.','«وضع السينما»، «تصبح على خير»، «أنا خارج». المنزل كله دفعة واحدة.'],
   'c4.t':['Se adelanta','It anticipates','يستبق الأحداث'],
   'c4.d':['Fugas, ventanas abiertas o una tormenta en camino: te avisa antes de que sea un problema.','Leaks, open windows or a storm on its way: it warns you before it becomes a problem.','تسرّبات أو نوافذ مفتوحة أو عاصفة قادمة: ينبّهك قبل أن تصبح مشكلة.'],
   'c5.t':['Servicios del hogar','Home services','خدمات المنزل'],
@@ -757,7 +778,7 @@ window.T = {
   'app.f2':['Perfiles para cada persona: su luz, su temperatura','Profiles for everyone: their light, their temperature','ملف لكل فرد: إضاءته وحرارته'],
   'app.f3':['Modo reposo para pantallas de pared','Rest mode for wall screens','وضع الاستراحة للشاشات الجدارية'],
   'app.f4':['Español, inglés y árabe','Spanish, English and Arabic','الإسبانية والإنجليزية والعربية'],
-  'app.reposo':['Di «Auré» o toca la pantalla','Say "Auré" or touch the screen','قل «أوري» أو المس الشاشة'],
+  'app.reposo':['Di «Auré» o toca la pantalla','Say “Auré” or touch the screen','قل «أوري» أو المس الشاشة'],
   'ph.saludo':['Buenas tardes, Laura.','Good evening, Laura.','مساء الخير يا لورا.'],
   'ph.pregunta':['¿En qué te ayudo?','How can I help?','كيف أساعدك؟'],
   'esc.bienvenida':['Bienvenida','Welcome','ترحيب'],
@@ -861,12 +882,16 @@ window.T = {
   'pie.legal':['Aviso legal','Legal notice','إشعار قانوني'],
   'pie.priv':['Privacidad','Privacy','الخصوصية'],
   'pie.cookies':['Cookies','Cookies','ملفات تعريف الارتباط'],
+  'saltar':['Saltar al contenido','Skip to content','تخطَّ إلى المحتوى'],
+  'pausa.pausar':['Pausar la conversación de ejemplo','Pause the sample conversation','إيقاف المحادثة التجريبية مؤقتاً'],
+  'pausa.seguir':['Reanudar la conversación de ejemplo','Resume the sample conversation','استئناف المحادثة التجريبية'],
+  'f.enviando':['Enviando…','Sending…','جارٍ الإرسال…'],
   'pie.by':['Un proyecto de Andrelia.','An Andrelia project.','مشروع من أندريليا.']
 };
 
 window.FRASES = [
   ['«Auré, modo cena»','«Auré, llego en diez minutos»','«Auré, ¿viene alguien mañana?»','«Auré, pon algo de jazz»','«Auré, buenas noches»'],
-  ['"Auré, dinner mode"','"Auré, I\'ll be home in ten minutes"','"Auré, is anyone coming tomorrow?"','"Auré, play some jazz"','"Auré, good night"'],
+  ['“Auré, dinner mode”','“Auré, I’ll be home in ten minutes”','“Auré, is anyone coming tomorrow?”','“Auré, play some jazz”','“Auré, good night”'],
   ['«أوري، وضع العشاء»','«أوري، سأصل خلال عشر دقائق»','«أوري، هل سيأتي أحد غداً؟»','«أوري، شغّل بعض الجاز»','«أوري، تصبح على خير»']
 ];
 
@@ -880,7 +905,7 @@ window.DIALOGOS = {
   estado:[['Auré, ¿todo bien en casa?','Todo en orden: puertas cerradas, sin fugas y 21,5 grados dentro.'],['Auré, is everything fine at home?','All in order: doors locked, no leaks and 21.5 degrees inside.'],['أوري، هل كل شيء على ما يرام؟','كل شيء على ما يرام: الأبواب مقفلة ولا تسرّبات والحرارة 21.5 درجة في الداخل.']],
   apagar:[['Auré, apaga todas las luces','Hecho. Toda la casa apagada.'],['Auré, turn off all the lights','Done. The whole house is off.'],['أوري، أطفئ جميع الأضواء','تم. أُطفئ المنزل بالكامل.']],
   encender:[['Auré, enciende las luces','Encendidas a tu gusto: luz cálida al 80 %.'],['Auré, turn on the lights','On, just how you like them: warm light at 80%.'],['أوري، أضئ الأنوار','أُضيئت كما تحب: إضاءة دافئة بنسبة 80٪.']],
-  otro:[['','En tu casa podré con eso y mucho más. En esta demostración, prueba con la cena, la música, las luces o «buenas noches».'],['','In your home I\'ll handle that and much more. In this demo, try dinner, music, the lights or "good night".'],['','في منزلك سأتولى ذلك وأكثر. في هذا العرض جرّب العشاء أو الموسيقى أو الإضاءة أو «تصبح على خير».']]
+  otro:[['','En tu casa podré con eso y mucho más. En esta demostración, prueba con la cena, la música, las luces o «buenas noches».'],['','In your home I’ll handle that and much more. In this demo, try dinner, music, the lights or “good night”.'],['','في منزلك سأتولى ذلك وأكثر. في هذا العرض جرّب العشاء أو الموسيقى أو الإضاءة أو «تصبح على خير».']]
 };
 
 window.LEYENDAS = {
@@ -888,7 +913,7 @@ window.LEYENDAS = {
      ['Speaker and microphone flush with the ceiling.','Wiring hidden inside the false ceiling.','Presence sensor, discreet in a corner.','Screen built into the wall.'],
      ['مكبّر صوت وميكروفون مدمجان في السقف.','الأسلاك مخفية داخل السقف المعلّق.','مستشعر حضور خفي في الزاوية.','شاشة مدمجة في الجدار.']],
   b:[['Un foseado con luz indirecta esconde altavoz, micrófono y cables.','La luz del foseado «respira» cuando Auré te escucha.','Relés dentro de los interruptores de siempre.','Pantalla de pared con el cable oculto.'],
-     ['A lighting cove hides the speaker, microphone and cables.','The cove light "breathes" when Auré is listening.','Relays inside your existing switches.','Wall screen with a concealed cable.'],
+     ['A lighting cove hides the speaker, microphone and cables.','The cove light “breathes” when Auré is listening.','Relays inside your existing switches.','Wall screen with a concealed cable.'],
      ['تجويف إضاءة يخفي مكبّر الصوت والميكروفون والأسلاك.','يتنفّس ضوء التجويف عندما يصغي أوري.','مرحّلات داخل المفاتيح الحالية.','شاشة جدارية بكابل مخفي.']]
 };
 
@@ -1027,7 +1052,7 @@ window.LEYENDAS = {
     limpiarHero();
     var k = ordenHero[pasoHero % ordenHero.length], d = window.DIALOGOS[k][ix()];
     yoHero.textContent = '«' + d[0] + '»';
-    if (idioma === 'en') yoHero.textContent = '"' + d[0] + '"';
+    if (idioma === 'en') yoHero.textContent = '“' + d[0] + '”';
     ellaHero.textContent = '';
     orbHero.className = 'orb pensando';
     timersHero.push(setTimeout(function () {
@@ -1035,11 +1060,21 @@ window.LEYENDAS = {
       escena(casaHero, k);
       timersHero.push(escribir(ellaHero, d[1], function () {
         orbHero.className = 'orb';
-        if (!quieto) timersHero.push(setTimeout(function () { pasoHero++; rondaHero(); }, 4600));
+        if (!quieto && !pausado) timersHero.push(setTimeout(function () { pasoHero++; rondaHero(); }, 4600));
       }, cursorHero));
     }, quieto ? 0 : 1000));
   }
-  document.addEventListener('visibilitychange', function () { if (document.hidden) limpiarHero(); else rondaHero(); });
+  var pausado = false, botonPausa = $('#pausaHero');
+  function pintarPausa() {
+    botonPausa.setAttribute('aria-pressed', pausado ? 'true' : 'false');
+    botonPausa.setAttribute('aria-label', t(pausado ? 'pausa.seguir' : 'pausa.pausar'));
+    $('#icoPausa').innerHTML = pausado ? '<path d="M8 5v14l11-7z"/>' : '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
+  }
+  botonPausa.addEventListener('click', function () {
+    pausado = !pausado; pintarPausa();
+    if (pausado) { limpiarHero(); orbHero.className = 'orb'; cursorHero.hidden = true; } else { pasoHero++; rondaHero(); }
+  });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) limpiarHero(); else if (!pausado) rondaHero(); });
 
   /* ---------- Un día: la casa sigue al scroll ---------- */
   var horas = ['07:30', '13:15', '19:40', '21:00', '03:10'];
@@ -1111,7 +1146,8 @@ window.LEYENDAS = {
     $('#hHora').setAttribute('transform', 'rotate(' + ho * 30 + ' 100 100)');
     $('#hMin').setAttribute('transform', 'rotate(' + mi * 6 + ' 100 100)');
     $('#hSeg').setAttribute('transform', 'rotate(' + sg * 6 + ' 100 100)');
-    $('#digTablet').textContent = String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+    var loc = { es: 'es-ES', en: 'en-GB', ar: 'ar-AE' }[idioma] || 'es-ES';
+    $('#digTablet').textContent = new Intl.DateTimeFormat(loc, { hour: '2-digit', minute: '2-digit', hour12: false }).format(d);
   }
   relojTablet(); setInterval(relojTablet, 1000);
 
@@ -1188,16 +1224,23 @@ window.LEYENDAS = {
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var err = $('#fError');
-    if (!$('#fNombre').value.trim() || !$('#fTel').value.trim()) { err.textContent = t('f.falta'); err.style.display = 'block'; return; }
+    var nombre = $('#fNombre'), tel = $('#fTel');
+    nombre.setAttribute('aria-invalid', nombre.value.trim() ? 'false' : 'true');
+    tel.setAttribute('aria-invalid', tel.value.trim() ? 'false' : 'true');
+    if (!nombre.value.trim() || !tel.value.trim()) {
+      err.textContent = t('f.falta'); err.style.display = 'block';
+      (nombre.value.trim() ? tel : nombre).focus();
+      return;
+    }
     err.style.display = 'none';
-    var btn = $('#fEnviar'); btn.disabled = true; btn.style.opacity = '.6';
+    var btn = $('#fEnviar'); btn.disabled = true; btn.style.opacity = '.6'; btn.textContent = t('f.enviando');
     fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
       .then(function (r) {
         if (!r.ok) throw new Error();
         $('#campos').style.display = 'none'; $('#fOk').style.display = 'flex';
       })
       .catch(function () { err.textContent = t('f.error'); err.style.display = 'block'; })
-      .then(function () { btn.disabled = false; btn.style.opacity = ''; });
+      .then(function () { btn.disabled = false; btn.style.opacity = ''; btn.textContent = t('f.enviar'); });
   });
 
   /* ---------- Idiomas ---------- */
@@ -1215,14 +1258,26 @@ window.LEYENDAS = {
     if (!ocupada) { estadoDemo.textContent = t('demo.estado'); }
     pasoHero = 0; rondaHero();
     activarDia(pasoDia);
-    if (!inicial) { try { localStorage.setItem('aure-idioma', idioma); } catch (e) {} }
+    pintarPausa();
+    if (!inicial) {
+      try { localStorage.setItem('aure-idioma', idioma); } catch (e) {}
+      try { var u = new URL(location.href); u.searchParams.set('lang', idioma); history.replaceState(null, '', u); } catch (e) {}
+    }
   }
   $$('.idiomas button').forEach(function (b) { b.addEventListener('click', function () { aplicarIdioma(b.getAttribute('data-lang')); }); });
 
-  var guardado = null;
+  var guardado = null, enUrl = null, navegador = 'es';
+  try { enUrl = new URL(location.href).searchParams.get('lang'); } catch (e) {}
   try { guardado = localStorage.getItem('aure-idioma'); } catch (e) {}
-  var navegador = (navigator.language || 'es').slice(0, 2);
-  aplicarIdioma(guardado || (navegador === 'ar' ? 'ar' : navegador === 'en' ? 'en' : 'es'), true);
+  var preferidos = (navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'es']);
+  for (var n = 0; n < preferidos.length; n++) {
+    var c = String(preferidos[n]).slice(0, 2);
+    if (LANGS.indexOf(c) !== -1) { navegador = c; break; }
+  }
+  aplicarIdioma(enUrl || guardado || navegador, true);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && menu.classList.contains('abierto')) { menu.classList.remove('abierto'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.focus(); }
+  });
 })();
 
 </script>
